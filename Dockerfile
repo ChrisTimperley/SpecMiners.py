@@ -1,12 +1,11 @@
 FROM ubuntu:16.04
 
-# install basic deps + gtest
 RUN apt-get update \
  && apt-get install -y \
       cmake \
       python \
       g++ \
-      git \
+      mercurial \
       libboost-all-dev \
       libgtest-dev \
       wget \
@@ -14,29 +13,31 @@ RUN apt-get update \
  && cd /usr/src/gtest \
  && mkdir build \
  && cmake CMakeLists.txt \
- && make install \
+ && make \
+ && cp *.a /usr/lib \
  && rm -rf /var/lib/apt/lists/* /tmp/*
 
-# install Spot
+ENV SPOT_VERSION 1.2.5
+ENV SPOT_HOME /opt/spot
 RUN cd /tmp \
- && wget http://spot.lip6.fr/dl/spot-1.2.5.tar.gz \
- && tar -xzf spot-1.2.5.tar.gz \
- && cd spot-1.2.5 \
+ && wget -nv "http://www.lrde.epita.fr/dload/spot/spot-${SPOT_VERSION}.tar.gz" \
+ && tar -xzf "spot-${SPOT_VERSION}.tar.gz" \
+ && mkdir -p $(dirname "${SPOT_HOME}") \
+ && mv "spot-${SPOT_VERSION}" "${SPOT_HOME}" \
+ && cd "${SPOT_HOME}" \
  && ./configure \
  && make \
- && make check \
  && make install \
  && rm -rf /tmp/*
 
-# install Texada from source
 ENV TEXADA_HOME /opt/texada
 ENV PATH "${TEXADA_HOME}:${PATH}"
 ENV TEXADA_REVISION 625ba2d
 RUN mkdir -p "${TEXADA_HOME}" \
- && git clone https://bitbucket.org/bestchai/texada "${TEXADA_HOME}" \
+ && hg clone https://bitbucket.org/bestchai/texada "${TEXADA_HOME}" \
  && cd "${TEXADA_HOME}" \
- && git checkout "${TEXADA_REVISION}" \
+ && hg update -r "${TEXADA_REVISION}" \
  && cp uservars.mk.example uservars.mk \
- && sed -i "/^SPOT_INCL:=/c\SPOT_INCL:=${PWD%/*}/spot-1.2.5/src/" uservars.mk \
+ && sed -i "/^SPOT_INCL:=/c\SPOT_INCL:=${SPOT_HOME}/src/" uservars.mk \
  && make \
  && ./texadatest
