@@ -44,4 +44,5 @@ RUN mkdir -p "${TEXADA_HOME}" \
  && echo "GTEST_INCL:=/usr/src/gtest" >> uservars.mk \
  && echo "BOOST_INCL:=/usr/include/boost" >> uservars.mk \
  && echo "BOOST_LIB:=/usr/lib/x86_64-linux-gnu" >> uservars.mk \
- && make
+ && make \
+ && ./texadatest
