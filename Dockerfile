@@ -3,12 +3,13 @@ FROM ubuntu:16.04
 RUN apt-get update \
  && apt-get install -y \
       cmake \
-      python \
+      python-dev \
       g++ \
       mercurial \
       libboost-all-dev \
       libgtest-dev \
       wget \
+      vim \
  && apt-get clean \
  && cd /usr/src/gtest \
  && mkdir build \
@@ -37,7 +38,10 @@ RUN mkdir -p "${TEXADA_HOME}" \
  && hg clone https://bitbucket.org/bestchai/texada "${TEXADA_HOME}" \
  && cd "${TEXADA_HOME}" \
  && hg update -r "${TEXADA_REVISION}" \
- && cp uservars.mk.example uservars.mk \
- && sed -i "/^SPOT_INCL:=/c\SPOT_INCL:=${SPOT_HOME}/src/" uservars.mk \
- && make \
- && ./texadatest
+ && echo "SPOT_LIB:=/opt/spot/src/.libs/libspot.so.0" >> uservars.mk \
+ && echo "GTEST_LIB:=/usr/lib" >> uservars.mk \
+ && echo "SPOT_INCL:=/opt/spot/src/" >> uservars.mk \
+ && echo "GTEST_INCL:=/usr/src/gtest" >> uservars.mk \
+ && echo "BOOST_INCL:=/usr/include/boost" >> uservars.mk \
+ && echo "BOOST_LIB:=/usr/lib/x86_64-linux-gnu" >> uservars.mk \
+ && make
