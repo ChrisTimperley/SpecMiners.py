@@ -46,7 +46,10 @@ class Daikon(MiningTool):
 
 
 if __name__ == '__main__':
+    dir_here = os.path.dirname(__file__)
+    dir_example = os.path.abspath(os.path.join(dir_here, '../example'))
     daikon = Daikon()
-    filenames = ['/home/chris/tools/specminers.py/ardu.decls',
-                 '/home/chris/tools/specminers.py/ardu.dtrace']
-    daikon(*filenames)
+    filenames = [os.path.join(dir_example, 'ardu.decls'),
+                 os.path.join(dir_example, 'ardu.dtrace')]
+    out = daikon(*filenames)
+    print(out)

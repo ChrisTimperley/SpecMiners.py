@@ -1,0 +1,2533 @@
+decl-version 2.0
+input-language houston
+var-comparability implicit
+
+ppt factory.MAV_CMD_NAV_WAYPOINT:::ENTER
+ppt-type enter
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_delay
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_NAV_WAYPOINT:::EXIT0
+ppt-type exit
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_delay
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_NAV_TAKEOFF:::ENTER
+ppt-type enter
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_NAV_TAKEOFF:::EXIT0
+ppt-type exit
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_NAV_LOITER_TURNS:::ENTER
+ppt-type enter
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_turns
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_NAV_LOITER_TURNS:::EXIT0
+ppt-type exit
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_turns
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_NAV_LOITER_TIME:::ENTER
+ppt-type enter
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_time
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_NAV_LOITER_TIME:::EXIT0
+ppt-type exit
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_time
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_NAV_RETURN_TO_LAUNCH:::ENTER
+ppt-type enter
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_NAV_RETURN_TO_LAUNCH:::EXIT0
+ppt-type exit
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_NAV_LAND:::ENTER
+ppt-type enter
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_NAV_LAND:::EXIT0
+ppt-type exit
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_NAV_SPLINE_WAYPOINT:::ENTER
+ppt-type enter
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_delay
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_NAV_SPLINE_WAYPOINT:::EXIT0
+ppt-type exit
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_delay
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_DO_CHANGE_SPEED:::ENTER
+ppt-type enter
+variable p_speed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_DO_CHANGE_SPEED:::EXIT0
+ppt-type exit
+variable p_speed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_DO_SET_HOME:::ENTER
+ppt-type enter
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_current
+  var-kind variable
+  dec-type int
+  rep-type int
+  flags not_ordered is_enum nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_DO_SET_HOME:::EXIT0
+ppt-type exit
+variable p_alt
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_current
+  var-kind variable
+  dec-type int
+  rep-type int
+  flags not_ordered is_enum nomod
+  comparability 22
+variable p_lat
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable p_lon
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+ppt factory.MAV_CMD_DO_PARACHUTE:::ENTER
+ppt-type enter
+variable p_action
+  var-kind variable
+  dec-type int
+  rep-type int
+  flags not_ordered is_enum nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+
+
+ppt factory.MAV_CMD_DO_PARACHUTE:::EXIT0
+ppt-type exit
+variable p_action
+  var-kind variable
+  dec-type int
+  rep-type int
+  flags not_ordered is_enum nomod
+  comparability 22
+variable home_latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable home_longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable altitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable latitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable longitude
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable armable
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable armed
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
+variable mode
+  var-kind variable
+  dec-type java.lang.String
+  rep-type java.lang.String
+  flags not_ordered is_enum
+  comparability 22
+variable vx
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vy
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable vz
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable pitch
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable yaw
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable roll
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable heading
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable airspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable groundspeed
+  var-kind variable
+  dec-type float
+  rep-type float
+  flags not_ordered 
+  comparability 22
+variable ekf_ok
+  var-kind variable
+  dec-type boolean
+  rep-type boolean
+  flags not_ordered 
+  comparability 22
