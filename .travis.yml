@@ -9,6 +9,6 @@ install:
 - pip install --upgrade .
 script:
 - pycodestyle --show-source specminers
-- mypy src --ignore-missing-imports
+- mypy specminers --ignore-missing-imports
 notifications:
   email: false
