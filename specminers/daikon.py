@@ -12,7 +12,8 @@ import attr
 def escape(val: Any) -> str:
     """Escapes a primitive value for inclusion within a Daikon file."""
     if isinstance(val, str):
-        return f'"{val.replace('\\', '\\\\').replace('"', '\\"')}"'
+        val = val.replace('\\', '\\\\').replace('"', '\\"')
+        return f'"{val}"'
     if isinstance(val, bool):
         return 'true' if val else 'false'
     return val
