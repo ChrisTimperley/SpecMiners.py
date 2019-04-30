@@ -63,14 +63,10 @@ class ProgramPoint:
 
     @property
     def lines(self) -> List[str]:
-        ls = [f'ppt {self.fullname}', 'ppt-type {self.typ.value}']
+        ls = [f'ppt {self.name}', 'ppt-type {self.typ.value}']
         for var in self.variables:
             ls += var.lines
         return ls
-
-    @property
-    def fullname(self) -> str:
-        return f'{self.name}:::POINT'
 
     def __str__(self) -> str:
         return '\n'.join(self.lines)
