@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from typing import List
+from typing import List, FrozenSet
 import os
 import shlex
 
@@ -19,6 +19,26 @@ class VarDecl:
                 '  var-kind variable',
                 f'  dec-type {self.dec_type}',
                 f'  rep-type {self.rep_type}']
+
+    def __str__(self) -> str:
+        return '\n'.join(self.lines)
+
+
+@attr.s(frozen=True, str=False)
+class GenericProgramPoint:
+    name: str = attr.ib()
+    variables: FrozenSet[VarDecl] = attr.ib(converter=frozenset)
+
+    @property
+    def lines(self) -> List[str]:
+        ls = [f'ppt {self.fullname}', 'ppt-type point']
+        for var in self.variables:
+            ls += var.lines
+        return ls
+
+    @property
+    def fullname(self) -> str:
+        return f'{self.name}:::POINT'
 
     def __str__(self) -> str:
         return '\n'.join(self.lines)
