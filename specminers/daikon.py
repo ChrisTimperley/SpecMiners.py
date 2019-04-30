@@ -1,9 +1,27 @@
 # -*- coding: utf-8 -*-
+from typing import List
 import os
 import shlex
 
 import docker
 import attr
+
+
+@attr.s(frozen=True, str=False)
+class VarDecl:
+    name: str = attr.ib()
+    dec_type: str = attr.ib()
+    rep_type: str = attr.ib()
+
+    @property
+    def lines(self) -> List[str]:
+        return [f'variable {self.name}',
+                '  var-kind variable',
+                f'  dec-type {self.dec_type}',
+                f'  rep-type {self.rep_type}']
+
+    def __str__(self) -> str:
+        return '\n'.join(self.lines)
 
 
 @attr.s(frozen=True)
