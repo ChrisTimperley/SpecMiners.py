@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from typing import List, FrozenSet, Optional
+from typing import List, Tuple, Optional, Mapping, Sequence, Iterator
+from collections import OrderedDict
 import os
 import shlex
 
@@ -31,7 +32,7 @@ class VarDecl:
 @attr.s(frozen=True, str=False)
 class GenericProgramPoint:
     name: str = attr.ib()
-    variables: FrozenSet[VarDecl] = attr.ib(converter=frozenset)
+    variables: Tuple[VarDecl, ...] = attr.ib(converter=tuple)
 
     @property
     def lines(self) -> List[str]:
@@ -46,6 +47,34 @@ class GenericProgramPoint:
 
     def __str__(self) -> str:
         return '\n'.join(self.lines)
+
+
+class Declarations(Mapping[str, GenericProgramPoint]):
+    def __init__(self, points: Sequence[GenericProgramPoint]) -> None:
+        self.__points = OrderedDict((p.name, p) for p in points)
+
+    def __len__(self) -> int:
+        return len(self.__points)
+
+    def __getitem__(self, name: str) -> GenericProgramPoint:
+        return self.__points[name]
+
+    def __iter__(self) -> Iterator[str]:
+        yield from self.__points
+
+    @property
+    def lines(self) -> List[str]:
+        ls = ['decl-version 2.0', 'var-comparability none']
+        for ppt in self.values():
+            ls += ppt.lines
+        return ls
+
+    def __str__(self) -> str:
+        return '\n'.join(self.lines)
+
+    def save(self, filename: str) -> None:
+        with open(filename, 'w') as f:
+            f.write(str(self))
 
 
 @attr.s(frozen=True)
