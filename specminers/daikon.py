@@ -34,11 +34,9 @@ class VarDecl:
     dec_type: str = attr.ib()
     rep_type: str = attr.ib()
     comparability: Optional[int] = attr.ib(default=None)
-    constant: Optional[str] = attr.ib(default=None)
-
-    @constant.converter
-    def convert_constant(val: Any) -> Optional[str]:
-        return val if val is None else escape(val)
+    constant: Optional[str] = attr.ib(
+        default=None,
+        converter=lambda v: v if v is None else escape(v))
 
     @property
     def lines(self) -> List[str]:
@@ -48,7 +46,7 @@ class VarDecl:
                  f'  rep-type {self.rep_type}']
         if self.comparability is not None:
             lines.append('  comparability {self.comparability}')
-        if self.constant_value is not None:
+        if self.constant is not None:
             lines.append('  constant {self.constant}')
         return lines
 
