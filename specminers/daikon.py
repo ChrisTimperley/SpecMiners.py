@@ -19,6 +19,10 @@ def escape(val: Any) -> str:
     return val
 
 
+def escape_if_not_none(val: Any) -> Optional[str]:
+    return val if val is None else escape(val)
+
+
 class PptType(Enum):
     enter = "enter"
     exit = "exit"
@@ -34,9 +38,8 @@ class VarDecl:
     dec_type: str = attr.ib()
     rep_type: str = attr.ib()
     comparability: Optional[int] = attr.ib(default=None)
-    constant: Optional[str] = attr.ib(
-        default=None,
-        converter=lambda v: v if v is None else escape(v))
+    constant: Optional[str] = \
+        attr.ib(default=None, converter=escape_if_not_none)
 
     @property
     def lines(self) -> List[str]:
