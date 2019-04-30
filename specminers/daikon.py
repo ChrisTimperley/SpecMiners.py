@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from typing import List, Tuple, Optional, Mapping, Sequence, Iterator
+from typing import List, Tuple, Optional, Mapping, Sequence, Iterator, Any
+from enum import Enum
 from collections import OrderedDict
 import os
 import shlex
@@ -8,12 +9,35 @@ import docker
 import attr
 
 
-@attr.s(frozen=True, str=False)
+def escape(val: Any) -> str:
+    """Escapes a primitive value for inclusion within a Daikon file."""
+    if isinstance(val, str):
+        return f'"{val.replace('\\', '\\\\').replace('"', '\\"')}"'
+    if isinstance(val, bool):
+        return 'true' if val else 'false'
+    return val
+
+
+class PptType(Enum):
+    enter = "enter"
+    exit = "exit"
+    cls = "class"
+    subexit = "subexit"
+    obj = "object"
+    point = "point"
+
+
+@attr.s(frozen=True, str=False, slots=True)
 class VarDecl:
     name: str = attr.ib()
     dec_type: str = attr.ib()
     rep_type: str = attr.ib()
     comparability: Optional[int] = attr.ib(default=None)
+    constant: Optional[str] = attr.ib(default=None)
+
+    @constant.converter
+    def convert_constant(val: Any) -> Optional[str]:
+        return val if val is None else escape(val)
 
     @property
     def lines(self) -> List[str]:
@@ -21,8 +45,10 @@ class VarDecl:
                  '  var-kind variable',
                  f'  dec-type {self.dec_type}',
                  f'  rep-type {self.rep_type}']
-        if comparability is not None:
-            lines.append('  comparability {self.comparability}'
+        if self.comparability is not None:
+            lines.append('  comparability {self.comparability}')
+        if self.constant_value is not None:
+            lines.append('  constant {self.constant}')
         return lines
 
     def __str__(self) -> str:
@@ -30,13 +56,14 @@ class VarDecl:
 
 
 @attr.s(frozen=True, str=False)
-class GenericProgramPoint:
+class ProgramPoint:
     name: str = attr.ib()
     variables: Tuple[VarDecl, ...] = attr.ib(converter=tuple)
+    typ: PptType = attr.ib(default=PptType.point)
 
     @property
     def lines(self) -> List[str]:
-        ls = [f'ppt {self.fullname}', 'ppt-type point']
+        ls = [f'ppt {self.fullname}', 'ppt-type {self.typ.value}']
         for var in self.variables:
             ls += var.lines
         return ls
@@ -49,14 +76,14 @@ class GenericProgramPoint:
         return '\n'.join(self.lines)
 
 
-class Declarations(Mapping[str, GenericProgramPoint]):
-    def __init__(self, points: Sequence[GenericProgramPoint]) -> None:
+class Declarations(Mapping[str, ProgramPoint]):
+    def __init__(self, points: Sequence[ProgramPoint]) -> None:
         self.__points = OrderedDict((p.name, p) for p in points)
 
     def __len__(self) -> int:
         return len(self.__points)
 
-    def __getitem__(self, name: str) -> GenericProgramPoint:
+    def __getitem__(self, name: str) -> ProgramPoint:
         return self.__points[name]
 
     def __iter__(self) -> Iterator[str]:
