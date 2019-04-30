@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from typing import List, FrozenSet
+from typing import List, FrozenSet, Optional
 import os
 import shlex
 
@@ -12,13 +12,17 @@ class VarDecl:
     name: str = attr.ib()
     dec_type: str = attr.ib()
     rep_type: str = attr.ib()
+    comparability: Optional[int] = attr.ib(default=None)
 
     @property
     def lines(self) -> List[str]:
-        return [f'variable {self.name}',
-                '  var-kind variable',
-                f'  dec-type {self.dec_type}',
-                f'  rep-type {self.rep_type}']
+        lines = [f'variable {self.name}',
+                 '  var-kind variable',
+                 f'  dec-type {self.dec_type}',
+                 f'  rep-type {self.rep_type}']
+        if comparability is not None:
+            lines.append('  comparability {self.comparability}'
+        return lines
 
     def __str__(self) -> str:
         return '\n'.join(self.lines)
