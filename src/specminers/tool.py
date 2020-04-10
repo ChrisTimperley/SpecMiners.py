@@ -10,8 +10,8 @@ import abc
 
 class Tool(abc.ABC):
     """An interface to a specification mining tool."""
-    @abc.abstractmethod
     @classmethod
+    @abc.abstractmethod
     def install(cls, force_reinstall: bool = True) -> None:
         """Performs any necessary installation steps for this tool.
 
@@ -23,8 +23,8 @@ class Tool(abc.ABC):
         """
         ...
 
-    @abc.abstractmethod
     @classmethod
+    @abc.abstractmethod
     def is_installed(cls) -> bool:
         """Determines whether or not this tool has been installed."""
         ...
