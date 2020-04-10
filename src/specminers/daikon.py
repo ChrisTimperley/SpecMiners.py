@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""
+This module provides an interface for interacting with Daikon and
+reading/writing Daikon's .decl and .dtrace files.
+"""
 from typing import List, Tuple, Optional, Mapping, Sequence, Iterator, Any
 from enum import Enum
 from collections import OrderedDict
