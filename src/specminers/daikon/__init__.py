@@ -16,6 +16,8 @@ import docker
 import dockerblade
 import attr
 
+from ..tool import Tool
+
 
 def escape(val: Any) -> str:
     """Escapes a primitive value for inclusion within a Daikon file."""
@@ -115,7 +117,7 @@ class Declarations(Mapping[str, ProgramPoint]):
 
 
 @attr.s(frozen=True)
-class Daikon:
+class Daikon(Tool):
     client: dockerblade.DockerDaemon = \
         attr.ib(default=dockerblade.DockerDaemon())
     IMAGE = 'specminers/daikon'
