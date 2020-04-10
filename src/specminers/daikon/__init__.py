@@ -7,10 +7,12 @@ from typing import List, Tuple, Optional, Mapping, Sequence, Iterator, Any
 from enum import Enum
 from collections import OrderedDict
 import contextlib
+import pkg_resources
 import os
 import shlex
 
 from loguru import logger
+import docker
 import dockerblade
 import attr
 
@@ -114,8 +116,39 @@ class Declarations(Mapping[str, ProgramPoint]):
 
 @attr.s(frozen=True)
 class Daikon:
-    client = attr.ib(default=dockerblade.DockerDaemon())
-    image: str = attr.ib(default='christimperley/daikon')
+    client: dockerblade.DockerDaemon = \
+        attr.ib(default=dockerblade.DockerDaemon())
+    IMAGE = 'specminers/daikon'
+    _DOCKER_DIRECTORY = os.path.dirname(pkg_resources.resource_filename(__name__, 'Dockerfile'))  # noqa
+
+    @classmethod
+    def install(cls, force_reinstall: bool = False) -> None:
+        """Ensures that this tool is installed.
+
+        Parameters
+        ----------
+        force_reinstall: bool
+            If :code:`True`, the image for this tool will be rebuilt
+            regardless of whether or not it already exists.
+        """
+        if cls.is_installed() and not force_reinstall:
+            return
+        with contextlib.closing(docker.from_env()) as docker_client:
+            logger.debug(f'building tool image [{cls.IMAGE}]')
+            image, _ = docker_client.images.build(path=cls._DOCKER_DIRECTORY,
+                                                  tag=cls.IMAGE,
+                                                  pull=True)
+            logger.debug(f'built tool image [{cls.IMAGE}]')
+
+    @classmethod
+    def is_installed(cls) -> bool:
+        """Checks whether this tool is installed."""
+        with contextlib.closing(docker.from_env()) as docker_client:
+            try:
+                docker_client.images.get(cls.IMAGE)
+            except docker.errors.ImageNotFound:
+                return False
+            return True
 
     def __call__(self, *filenames: str) -> str:
         """Executes the Daikon binary.
@@ -126,7 +159,13 @@ class Daikon:
             If no filenames are provided as input.
         FileNotFoundError
             If a given input file cannot be found.
+        RuntimeError
+            If the image for the tool has not been installed.
         """
+        if not self.is_installed():
+            message = f'image for tool is not installed [{self.IMAGE}]'
+            raise RuntimeError(message)
+
         logger.debug(f"running Daikon on files: {', '.join(filenames)}")
         if not filenames:
             raise ValueError('expected one or more filenames as input')
@@ -147,7 +186,7 @@ class Daikon:
 
         # launch container
         with contextlib.ExitStack() as stack:
-            container = self.client.provision(self.image, volumes=volumes)
+            container = self.client.provision(self.IMAGE, volumes=volumes)
             shell = container.shell('/bin/sh')
             stack.callback(container.remove)
 
@@ -169,6 +208,7 @@ class Daikon:
 if __name__ == '__main__':
     dir_here = os.path.dirname(__file__)
     dir_example = os.path.abspath(os.path.join(dir_here, '../../../example'))
+    Daikon.install()
     daikon = Daikon()
     filenames = [os.path.join(dir_example, 'ardu.decls'),
                  os.path.join(dir_example, 'ardu.dtrace')]
