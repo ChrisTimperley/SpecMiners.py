@@ -2,10 +2,12 @@
 from typing import List, Tuple, Optional, Mapping, Sequence, Iterator, Any
 from enum import Enum
 from collections import OrderedDict
+import contextlib
 import os
 import shlex
 
-import docker
+from loguru import logger
+import dockerblade
 import attr
 
 
@@ -104,13 +106,29 @@ class Declarations(Mapping[str, ProgramPoint]):
 
 @attr.s(frozen=True)
 class Daikon:
-    client = attr.ib(default=docker.from_env())
+    client = attr.ib(default=dockerblade.DockerDaemon())
     image: str = attr.ib(default='christimperley/daikon')
 
     def __call__(self, *filenames: str) -> str:
-        """Executes the Daikon binary."""
-        # TODO ensure given files exists
-        assert filenames, "expected one or more filenames."
+        """Executes the Daikon binary.
+
+        Raises
+        ------
+        ValueError
+            If no filenames are provided as input.
+        FileNotFoundError
+            If a given input file cannot be found.
+        """
+        logger.debug(f"running Daikon on files: {', '.join(filenames)}")
+        if not filenames:
+            raise ValueError('expected one or more filenames as input')
+
+        # ensure that all paths are absolute
+        filenames = tuple(os.path.abspath(filename) for filename in filenames)
+
+        for filename in filenames:
+            if not os.path.isfile(filename):
+                raise FileNotFoundError(filename)
 
         ctr_dir = '/tmp/.specminers'
         host_to_ctr_fn = {fn: os.path.join(ctr_dir, os.path.basename(fn))
@@ -119,22 +137,30 @@ class Daikon:
         volumes = {fn_host: {'bind': fn_ctr, 'mode': 'ro'}
                    for fn_host, fn_ctr in host_to_ctr_fn.items()}
 
-        command = (
-            'java daikon.Daikon '
-            '--no_show_progress --no_text_output --noversion '
-            '-o /tmp/mined.inv.tgz '
-            f"{' '.join(shlex.quote(f) for f in ctr_filenames)} "
-            '&> /dev/null '
-            '&& java daikon.PrintInvariants /tmp/mined.inv.tgz')
-        command = f'/bin/bash -c "{command}"'
-        output = self.client.containers.run(self.image, command,
-                                            volumes=volumes).decode('utf-8')
+        # launch container
+        with contextlib.ExitStack() as stack:
+            container = self.client.provision(self.image, volumes=volumes)
+            shell = container.shell('/bin/sh')
+            stack.callback(container.remove)
+
+            # generate invariants
+            command = ('java daikon.Daikon '
+                       '--no_show_progress --no_text_output --noversion '
+                       '-o /tmp/mined.inv.tgz '
+                       f"{' '.join(shlex.quote(f) for f in ctr_filenames)}")
+            shell.check_call(command)
+
+            # read invariants
+            command = 'java daikon.PrintInvariants /tmp/mined.inv.tgz'
+            output = shell.check_output(command)
+
+        logger.debug(f"daikon output:\n{output}")
         return output
 
 
 if __name__ == '__main__':
     dir_here = os.path.dirname(__file__)
-    dir_example = os.path.abspath(os.path.join(dir_here, '../example'))
+    dir_example = os.path.abspath(os.path.join(dir_here, '../../example'))
     daikon = Daikon()
     filenames = [os.path.join(dir_example, 'ardu.decls'),
                  os.path.join(dir_example, 'ardu.dtrace')]
