@@ -3,4 +3,9 @@
 import os
 import setuptools
 
-setuptools.setup(version='0.0.1')
+PATH = 'src/specminers/version.py'
+PATH = os.path.join(os.path.dirname(__file__), PATH)
+with open(PATH, 'r') as fh:
+    exec(fh.read())
+
+setuptools.setup(version=__version__)
