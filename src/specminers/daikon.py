@@ -81,12 +81,15 @@ class Declarations(Mapping[str, ProgramPoint]):
         self.__points = OrderedDict((p.name, p) for p in points)
 
     def __len__(self) -> int:
+        """Returns the number of program points."""
         return len(self.__points)
 
     def __getitem__(self, name: str) -> ProgramPoint:
+        """Retrieves a program point with a given name."""
         return self.__points[name]
 
     def __iter__(self) -> Iterator[str]:
+        """Returns an iterator over the names of the program points."""
         yield from self.__points
 
     @property
@@ -100,6 +103,7 @@ class Declarations(Mapping[str, ProgramPoint]):
         return '\n'.join(self.lines)
 
     def save(self, filename: str) -> None:
+        """Saves the variable declarations to a given file on disk."""
         with open(filename, 'w') as f:
             f.write(str(self))
 
