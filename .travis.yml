@@ -4,11 +4,9 @@ services:
 python:
 - '3.6'
 install:
-- pip install pycodestyle
-- pip install mypy mypy-extensions
-- pip install --upgrade .
+- pip install -r requirements.dev.txt
+- pip install .
 script:
-- pycodestyle --show-source specminers
-- mypy specminers --ignore-missing-imports
+- tox
 notifications:
   email: false
