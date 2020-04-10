@@ -113,7 +113,6 @@ class Daikon:
         assert filenames, "expected one or more filenames."
 
         ctr_dir = '/tmp/.specminers'
-        host_filenames = filenames
         host_to_ctr_fn = {fn: os.path.join(ctr_dir, os.path.basename(fn))
                           for fn in filenames}
         ctr_filenames = [fn for fn in host_to_ctr_fn.values()]
