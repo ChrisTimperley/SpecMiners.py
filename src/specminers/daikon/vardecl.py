@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 __all__ = ('VarDecl', 'VarDeclLoader')
 
-from typing import Iterator, List, Optional, Sequence
-import collections
+from typing import List, Optional, Union
 
 from loguru import logger
 import attr
 
 from .helpers import escape_if_not_none
 from .loader import LineBuffer, LineLoader
+
+DEC_TYPE_TO_CONVERTER = {
+    'float': float,
+    'int': int,
+    'boolean': bool,
+    'java.lang.String': str
+}
 
 
 @attr.s(frozen=True, str=False, slots=True, auto_attribs=True)
@@ -32,19 +38,9 @@ class VarDecl:
             lines.append('  constant {self.constant}')
         return lines
 
-    @classmethod
-    def from_lines(cls, lines: Sequence[str]) -> 'VarDecl':
-        comparability: Optional[int] = None
-        constant: Optional[str] = None
-        return VarDecl(name=name,
-                       dec_type=dec_type,
-                       rep_type=rep_type,
-                       comparability=comparability,
-                       constant=constant)
-
-    @classmethod
-    def from_string(cls, s) -> 'VarDecl':
-        return cls.from_lines(s.split('\n'))
+    def convert(self, value_string: str) -> Union[int, str, float]:
+        converter = DEC_TYPE_TO_CONVERTER[self.dec_type]
+        return converter(value_string)
 
     def __str__(self) -> str:
         return '\n'.join(self.lines)
@@ -88,7 +84,7 @@ class VarDeclLoader(LineLoader[VarDecl]):
         self.rep_type = rep_type
 
     def _read_constant(self, constant: str) -> None:
-        self.constant = constant 
+        self.constant = constant
 
     def _read_flags(self, *flags: str) -> None:
         logger.warning('flags are currently ignored!')

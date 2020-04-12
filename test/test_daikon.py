@@ -46,3 +46,19 @@ def test_parse_decls():
     assert len(declarations) == len(expected_decl_names)
     for name in expected_decl_names:
         assert name in declarations
+
+
+def test_parse_trace():
+    decls_filename = os.path.join(DIR_EXAMPLES, 'ardu.decls')
+    trace_filename = os.path.join(DIR_EXAMPLES, 'ardu.dtrace')
+    declarations = specminers.daikon.Declarations.load(decls_filename)
+    reader = specminers.daikon.TraceFileReader(declarations)
+    num_records = sum(1 for record in reader.read(trace_filename))
+    assert num_records == 16384
+
+    records = reader.read(trace_filename)
+    first_record = next(records)
+    assert first_record.ppt == declarations['factory.MAV_CMD_NAV_TAKEOFF:::ENTER']
+    assert first_record.nonce == 1
+    assert first_record['latitude'].value == -35.3629389
+    assert first_record['latitude'].modified == 1

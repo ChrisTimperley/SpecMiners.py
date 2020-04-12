@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __all__ = ('Declarations', 'DeclarationsLoader')
 
-from typing import Iterable, Iterator, List, Mapping, Optional, Sequence
+from typing import Iterator, List, Mapping, Optional, Sequence
 import collections
 
 from loguru import logger
