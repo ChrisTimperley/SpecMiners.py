@@ -1,43 +1,18 @@
 # -*- coding: utf-8 -*-
-__all__ = ('TraceFileReader', 'TraceRecord', 'TraceRecordVariable')
+__all__ = ('TraceFileReader',)
 
-from typing import Dict, Iterator, Mapping, Optional, Union
+from typing import Dict, Iterator, Optional, Union
 
 import attr
 
-from .declarations import Declarations
-from .loader import LineBuffer
-from .ppt import ProgramPoint
-
-
-@attr.s(slots=True, frozen=True, auto_attribs=True)
-class TraceRecordVariable:
-    name: str
-    value: Union[str, int, float]
-    modified: int
-
-
-@attr.s(slots=True, frozen=True, auto_attribs=True)
-class TraceRecord(Mapping[str, TraceRecordVariable]):
-    ppt: ProgramPoint
-    nonce: Optional[int]
-    _values: Mapping[str, Union[str, int, float]]
-    _modified: Mapping[str, int]
-
-    def __len__(self) -> int:
-        return len(self._values)
-
-    def __iter__(self) -> Iterator[str]:
-        yield from self._values
-
-    def __getitem__(self, variable: str) -> TraceRecordVariable:
-        value = self._values[variable]
-        modified = self._modified[variable]
-        return TraceRecordVariable(variable, value, modified)
+from .record import TraceRecord
+from ..declarations import Declarations
+from ..loader import LineBuffer
 
 
 @attr.s(slots=True, frozen=True, auto_attribs=True)
 class TraceFileReader:
+    """Used to read Daikon trace files."""
     declarations: Declarations
 
     def read_record(self, lines: LineBuffer) -> Iterator[TraceRecord]:
@@ -55,7 +30,7 @@ class TraceFileReader:
             actual_var_name = lines.pop()
             assert actual_var_name == expected_var_name
             var = ppt[expected_var_name]
-            values[actual_var_name] = var.convert(lines.pop())
+            values[actual_var_name] = var.decode(lines.pop())
             modified[actual_var_name] = int(lines.pop())
         yield TraceRecord(ppt, nonce, values, modified)
 

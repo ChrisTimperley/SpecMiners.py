@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import pytest
 
+import contextlib
 import os
+import tempfile
 
 import specminers
 
@@ -62,3 +64,43 @@ def test_parse_trace():
     assert first_record.nonce == 1
     assert first_record['latitude'].value == -35.3629389
     assert first_record['latitude'].modified == 1
+
+
+def test_write_trace():
+    # keep track of modified values!
+    decls_filename = os.path.join(DIR_EXAMPLES, 'ardu.decls')
+    decls = specminers.daikon.Declarations.load(decls_filename)
+
+    with contextlib.ExitStack() as stack:
+        _, trace_filename = tempfile.mkstemp()
+        stack.callback(os.remove, trace_filename)
+        with specminers.daikon.TraceWriter.for_file(decls, trace_filename) as writer:
+            writer.write('factory.MAV_CMD_NAV_TAKEOFF:::ENTER',
+                         p_alt=11.89013788794762,
+                         home_latitude=-35.3629389,
+                         home_longitude=149.1650801,
+                         altitude=0.01,
+                         latitude=-35.3629389,
+                         longitude=149.16508,
+                         armable=1,
+                         armed=1,
+                         mode="GUIDED",
+                         vx=-0.16,
+                         vy=-0.14,
+                         vz=0.0,
+                         pitch=-0.009264621883630753,
+                         yaw=-1.6489005088806152,
+                         roll=-0.009207483381032944,
+                         heading=265,
+                         airspeed=0.0,
+                         groundspeed=0.22160862386226654,
+                         ekf_ok=1)
+
+        # FIXME this!
+        # let's try to read the record!
+        reader = specminers.daikon.TraceFileReader(decls)
+        records = reader.read(trace_filename)
+        first_record = next(records)
+        assert first_record.ppt.name == 'factory.MAV_CMD_NAV_TAKEOFF:::ENTER'
+        assert first_record.nonce == 1
+        assert first_record['latitude'].value == -35.3629389

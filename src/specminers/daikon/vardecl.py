@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __all__ = ('VarDecl', 'VarDeclLoader')
 
-from typing import List, Optional, Union
+from typing import Any, Callable, List, Mapping, Optional, Union
 
 from loguru import logger
 import attr
@@ -9,11 +9,18 @@ import attr
 from .helpers import escape_if_not_none
 from .loader import LineBuffer, LineLoader
 
-DEC_TYPE_TO_CONVERTER = {
+DEC_TYPE_TO_DECODER: Mapping[str, Callable[[str], Any]] = {
     'float': float,
     'int': int,
     'boolean': bool,
     'java.lang.String': str
+}
+
+DEC_TYPE_TO_ENCODER: Mapping[str, Callable[[Any], str]] = {
+    'float': str,
+    'int': str,
+    'boolean': str,
+    'java.lang.String': (lambda s: f'"{s}"')
 }
 
 
@@ -38,9 +45,11 @@ class VarDecl:
             lines.append('  constant {self.constant}')
         return lines
 
-    def convert(self, value_string: str) -> Union[int, str, float]:
-        converter = DEC_TYPE_TO_CONVERTER[self.dec_type]
-        return converter(value_string)
+    def decode(self, value_string: str) -> Union[int, str, float]:
+        return DEC_TYPE_TO_DECODER[self.dec_type](value_string)
+
+    def encode(self, value: Union[int, str, float]) -> str:
+        return DEC_TYPE_TO_ENCODER[self.dec_type](value)
 
     def __str__(self) -> str:
         return '\n'.join(self.lines)
