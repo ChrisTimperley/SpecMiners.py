@@ -24,6 +24,11 @@ class LineBuffer:
             lines = map(lambda l: l.strip('\n'), fh)
             yield LineBuffer(lines)
 
+    @classmethod
+    def for_file_contents(cls, contents: str) -> 'LineBuffer':
+        lines: Iterator[str] = iter(contents.split('\n'))
+        return LineBuffer(lines)
+
     def prepend(self, line: str) -> None:
         """Prepends a line to the front of the buffer."""
         self._source = itertools.chain([line], self._source)

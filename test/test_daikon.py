@@ -104,3 +104,12 @@ def test_write_trace():
         assert first_record.ppt.name == 'factory.MAV_CMD_NAV_TAKEOFF:::ENTER'
         assert first_record.nonce == 1
         assert first_record['latitude'].value == -35.3629389
+
+
+def test_read_invariants():
+    decls_filename = os.path.join(DIR_EXAMPLES, 'ardu.decls')
+    inv_filename = os.path.join(DIR_EXAMPLES, 'ardu.inv')
+    decls = specminers.daikon.Declarations.load(decls_filename)
+    reader = specminers.daikon.InvariantReader(decls)
+    invariants = reader.from_file(inv_filename)
+    assert invariants.size == 20698
