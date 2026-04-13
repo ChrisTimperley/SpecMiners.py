@@ -1,5 +1,5 @@
 mypy==0.730
-pytest==5.2.1
+pytest==9.0.3
 ptpython==2.0.6
 tox==3.14.0
 flake8==3.7.9
